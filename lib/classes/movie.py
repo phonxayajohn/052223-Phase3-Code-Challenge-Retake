@@ -2,17 +2,20 @@ class Movie:
     all = []
 
     def __init__(self, title):
-        self.title = title
-        Movie.all.append(self)
+        if isinstance(title, str) and len(title) > 0:
+            self.title = title
+            Movie.all.append(self)
+        else:
+            raise Exception
 
     @property
     def title(self):
         return self._title
     
     @title.setter
-    def title(self, title):
-        if isinstance(title, str) and len(title) > 0:
-            self._title = title
+    def title(self, new_title):
+        if isinstance(new_title, str) and len(new_title) > 0:
+            self._title = new_title
         else:
             raise Exception
         

@@ -3,17 +3,20 @@ class Viewer:
     all = []
 
     def __init__(self, username):
-        self.username = username
-        Viewer.all.append(self)
+        if isinstance(username, str) and 6 <= len(username) <= 16:
+            self.username = username
+            Viewer.all.append(self)
+        else:
+            raise Exception
 
     @property
     def username(self):
         return self._username
     
     @username.setter
-    def username(self, username):
-        if isinstance(username, str) and 6 <= len(username) <= 16:
-            self._username = username
+    def username(self, new_username):
+        if isinstance(new_username, str) and 6 <= len(new_username) <= 16:
+            self._username = new_username
         else:
             raise Exception
         
